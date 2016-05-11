@@ -4,7 +4,15 @@ MAINTAINER	Markus Binsteiner <makkus@gmail.com>
 CMD ["/sbin/my_init"]
 
 # Seafile dependencies and system configuration
-RUN apt-get update && apt-get install -y \
+RUN echo 'deb http://mirrors.aliyuncs.com/ubuntu trusty main restricted' > /etc/apt/sources.list && \
+    echo 'deb http://mirrors.aliyuncs.com/ubuntu trusty-updates main restricted' >> /etc/apt/sources.list && \
+    echo 'deb-src http://mirrors.aliyuncs.com/ubuntu trusty main restricted' >> /etc/apt/sources.list && \
+    echo 'deb http://mirrors.aliyuncs.com/ubuntu trusty-updates main restricted' >> /etc/apt/sources.list && \
+    echo 'deb-src http://mirrors.aliyuncs.com/ubuntu trusty-updates main restricted' >> /etc/apt/sources.list && \
+    echo 'deb http://extras.ubuntu.com/ubuntu trusty main' >> /etc/apt/sources.list && \
+    echo 'deb-src http://extras.ubuntu.com/ubuntu trusty main' >> /etc/apt/sources.list && \
+    
+ 	apt-get update && apt-get install -y \
 		python2.7 \
 		python-setuptools \
 		python-simplejson \
