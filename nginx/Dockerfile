@@ -6,7 +6,7 @@
 
 # Pull base image.
 FROM phusion/baseimage:0.9.16
-
+# Install Nginx.
 RUN echo 'deb http://mirrors.aliyuncs.com/ubuntu trusty main restricted' > /etc/apt/sources.list && \
     echo 'deb http://mirrors.aliyuncs.com/ubuntu trusty-updates main restricted' >> /etc/apt/sources.list && \
     echo 'deb-src http://mirrors.aliyuncs.com/ubuntu trusty main restricted' >> /etc/apt/sources.list && \
@@ -14,9 +14,6 @@ RUN echo 'deb http://mirrors.aliyuncs.com/ubuntu trusty main restricted' > /etc/
     echo 'deb-src http://mirrors.aliyuncs.com/ubuntu trusty-updates main restricted' >> /etc/apt/sources.list && \
     echo 'deb http://extras.ubuntu.com/ubuntu trusty main' >> /etc/apt/sources.list && \
     echo 'deb-src http://extras.ubuntu.com/ubuntu trusty main' >> /etc/apt/sources.list && \
-    
-# Install Nginx.
-RUN \
   add-apt-repository -y ppa:nginx/stable && \
   apt-get update && \
   apt-get install -y nginx zile python-flup && \
